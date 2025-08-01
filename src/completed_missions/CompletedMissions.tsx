@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = import.meta.env.VITE_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+import { supabase } from "../supabase/supabaseClient";
+import { useAuth } from "../supabase/AuthContext";
+import { Card } from "@radix-ui/themes";
 
 const CompletedMissions: React.FC = () => {
   const [data, setData] = useState<any[]>([]);
+  const auth = useAuth();
   useEffect(() => {
     const fetchCompletedMissions = async () => {
+      if (!auth.user) {
+        console.warn("User not authenticated, skipping fetch.");
+        return;
+      }
       const { data, error } = await supabase
         .from("mission")
         .select("*")
-        .eq("user_id", 1000);
+        .eq("user_uuid", auth.user?.id);
 
       if (error) {
         console.error("Error fetching completed missions:", error);
@@ -24,13 +27,13 @@ const CompletedMissions: React.FC = () => {
 
     fetchCompletedMissions();
   }
-  , []);
+  , [auth.user]);
   return <div>
     { data && data.length > 0 && data.map((mission) => (
-      <div key={mission.id}>
+      <Card key={mission.id}>
         <h3>{mission.title}</h3>
         <p>{mission.description}</p>
-      </div>
+      </Card>
     )) }
   </div>};
 
