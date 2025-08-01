@@ -16,7 +16,6 @@ function App() {
           </NavigationItem>
           <NavigationItem value="completedmissions">
             <CompletedMissions />
-            <Text>Completed missions are coming soon</Text>
           </NavigationItem>
           <NavigationItem value="reports">
             <Text>Reports are coming soon</Text>
