@@ -5,6 +5,7 @@ import ApplicationBody from './layout/ApplicationBody';
 import Navigation from './navigation/Navigation';
 import NavigationItem from './navigation/NavitagationItem';
 import CompletedMissions from './completed_missions/CompletedMissions';
+import CurrentMission from './current_mission/CurrentMission';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <ApplicationHeader />
       <Navigation currentValue='currentmission' completedValue='completedmissions' reportsValue='reports'>
         <NavigationItem value="currentmission">
-          <Text>Current mission is coming soon</Text>
+          <CurrentMission />
         </NavigationItem>
         <NavigationItem value="completedmissions">
           <CompletedMissions />
