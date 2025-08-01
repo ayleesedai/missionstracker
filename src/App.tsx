@@ -4,6 +4,7 @@ import './App.css';
 import ApplicationBody from './layout/ApplicationBody';
 import Navigation from './navigation/Navigation';
 import NavigationItem from './navigation/NavitagationItem';
+import CompletedMissions from './completed_missions/CompletedMissions';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Text>Current mission is coming soon</Text>
           </NavigationItem>
           <NavigationItem value="completedmissions">
+            <CompletedMissions />
             <Text>Completed missions are coming soon</Text>
           </NavigationItem>
           <NavigationItem value="reports">
