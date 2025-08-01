@@ -11,15 +11,15 @@ function App() {
  		<ApplicationBody>
       <ApplicationHeader />
       <Navigation currentValue='currentmission' completedValue='completedmissions' reportsValue='reports'>
-          <NavigationItem value="currentmission">
-            <Text>Current mission is coming soon</Text>
-          </NavigationItem>
-          <NavigationItem value="completedmissions">
-            <CompletedMissions />
-          </NavigationItem>
-          <NavigationItem value="reports">
-            <Text>Reports are coming soon</Text>
-          </NavigationItem>
+        <NavigationItem value="currentmission">
+          <Text>Current mission is coming soon</Text>
+        </NavigationItem>
+        <NavigationItem value="completedmissions">
+          <CompletedMissions />
+        </NavigationItem>
+        <NavigationItem value="reports">
+          <Text>Reports are coming soon</Text>
+        </NavigationItem>
       </Navigation>
 		</ApplicationBody>
   )
