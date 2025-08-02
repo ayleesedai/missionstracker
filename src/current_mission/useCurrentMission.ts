@@ -16,12 +16,10 @@ export function useCurrentMission() {
 
   const [loading, setLoading] = useState(true)
   const [currentMission, setCurrentMission] = useState<Mission | null>(null)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const loadMissions = async () => {
       setLoading(true)
-      setError(null)
 
       const { data: openMission, error } = await supabase
         .from("mission")
@@ -32,7 +30,6 @@ export function useCurrentMission() {
         .single()
 
       if (error) {
-        setError(error.message)
         setCurrentMission(null)
       } else {
         setCurrentMission(openMission)
@@ -49,5 +46,5 @@ export function useCurrentMission() {
     }
   }, [user])
 
-  return { currentMission, loading, error }
+  return { currentMission, loading }
 }

@@ -7,7 +7,7 @@ import MissionField from "./MissionField";
 
 export default function CurrentMission() {
   const { user } = useAuth();
-  const { currentMission, loading, error: loadError } = useCurrentMission();
+  const { currentMission, loading } = useCurrentMission();
 
   const [form, setForm] = useState({
     start: "",
@@ -17,7 +17,6 @@ export default function CurrentMission() {
   });
 
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
   // Prefill the form when editing an existing mission
   useEffect(() => {
@@ -41,7 +40,6 @@ export default function CurrentMission() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    setSuccess(null);
 
     if (currentMission) {
       const { error } = await supabase
@@ -57,7 +55,7 @@ export default function CurrentMission() {
       if (error) {
         setError(error.message);
       } else {
-        setSuccess("Mission updated.");
+        window.location.reload();
       }
     } else {
       const { error } = await supabase.from("mission").insert({
@@ -71,7 +69,7 @@ export default function CurrentMission() {
       if (error) {
         setError(error.message);
       } else {
-        setSuccess("New mission created.");
+        window.location.reload();
       }
     }
   };
@@ -109,18 +107,17 @@ export default function CurrentMission() {
         <Button
           type="submit"
           size="4"
-          color={currentMission ? "indigo" : "red"}
+          color={currentMission ? "indigo" : "green"}
           style={{ alignSelf: "start" }}
         >
           {currentMission ? "Update Mission" : "Create Mission"}
         </Button>
 
-        {(error || loadError) && (
+        {error && (
           <Badge size="3" color="red">
-            {error || loadError}
+            {error}
           </Badge>
         )}
-        {success && <p className="text-green-600">{success}</p>}
       </Flex>
     </form>
   );
