@@ -19,21 +19,28 @@ const Login = () => {
   };
 
   return (
-      <form onSubmit={handleLogin} className="flex flex-col gap-2">
-        <Flex direction="column" gap="6" style={{ padding: "20px" }} align="start">
-      <Heading size="8">Login</Heading>
-          <TextField.Root
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            size="3"
-            style={{ width: "450px" }}
-          />
-          <Button size="4" type="submit">Send Magic Link</Button>
-          {message && <Badge color="crimson">{message}</Badge>}
-        </Flex>
-      </form>
+    <form onSubmit={handleLogin} className="flex flex-col gap-2">
+      <Flex
+        direction="column"
+        gap="6"
+        style={{ padding: "20px" }}
+        align="start"
+      >
+        <Heading size="8">Login</Heading>
+        <TextField.Root
+          type="email"
+          placeholder="you@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          size="3"
+          style={{ width: "450px" }}
+        />
+        <Button size="4" type="submit">
+          Send Magic Link
+        </Button>
+        {message && <Badge color="crimson">{message}</Badge>}
+      </Flex>
+    </form>
   );
 };
 
