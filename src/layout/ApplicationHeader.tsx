@@ -1,8 +1,9 @@
-import { Flex, Heading } from "@radix-ui/themes";
+import { Box, Flex, Heading } from "@radix-ui/themes";
+import Logout from "../login/Logout";
 
 function ApplicationHeader() {
   return (
-    <Flex align="center" justify="center" style={{ padding: "10px", backgroundColor: "var(--accent-3)" }}>
+    <Flex align="center" justify="center" style={{ padding: "10px", backgroundColor: "var(--accent-3)", position: "relative" }}>
       <Heading
         color="blue"
         size={{
@@ -13,6 +14,9 @@ function ApplicationHeader() {
       >
         Missions Tracker
       </Heading>
+      <Box position={"absolute"} right="10px">
+        <Logout />
+      </Box>
     </Flex>
   );
 }
