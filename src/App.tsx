@@ -4,19 +4,19 @@ import './App.css';
 import ApplicationBody from './layout/ApplicationBody';
 import Navigation from './navigation/Navigation';
 import NavigationItem from './navigation/NavitagationItem';
-import CompletedMissions from './completed_missions/CompletedMissions';
+import Missions from './completed_missions/Missions';
 import CurrentMission from './current_mission/CurrentMission';
 
 function App() {
   return (
  		<ApplicationBody>
       <ApplicationHeader />
-      <Navigation currentValue='currentmission' completedValue='completedmissions' reportsValue='reports'>
+      <Navigation currentValue='currentmission' completedValue='missions' reportsValue='reports'>
         <NavigationItem value="currentmission">
           <CurrentMission />
         </NavigationItem>
-        <NavigationItem value="completedmissions">
-          <CompletedMissions />
+        <NavigationItem value="missions">
+          <Missions />
         </NavigationItem>
         <NavigationItem value="reports">
           <Text>Reports are coming soon</Text>

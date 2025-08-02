@@ -2,11 +2,12 @@ import { Flex, Heading } from "@radix-ui/themes";
 
 function ApplicationHeader() {
   return (
-    <Flex align="center" justify="center" style={{ padding: "10px" }}>
+    <Flex align="center" justify="center" style={{ padding: "10px", backgroundColor: "var(--accent-3)" }}>
       <Heading
+        color="blue"
         size={{
-          initial: "5",
-          md: "7",
+          initial: "7",
+          md: "8",
           xl: "9",
         }}
       >
