@@ -7,7 +7,6 @@ interface MissionFieldProps {
   type: 'date' | 'datetime-local' | 'email' | 'hidden' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
 }
 
 const MissionField: React.FC<MissionFieldProps> = ({
@@ -16,7 +15,6 @@ const MissionField: React.FC<MissionFieldProps> = ({
   type,
   value,
   onChange,
-  required = false,
 }) => (
   <Flex align="start" gap="0" direction="column" >
     <Text size="1" weight="bold">{label}</Text>
@@ -26,7 +24,6 @@ const MissionField: React.FC<MissionFieldProps> = ({
       name={name || label.toLowerCase().replace(/\s+/g, '_')}
       value={value}
       onChange={onChange}
-      required={required}
       style={{ width: type === "text" ? "30rem" : undefined, maxWidth: "95%" }}
     />
   </Flex>

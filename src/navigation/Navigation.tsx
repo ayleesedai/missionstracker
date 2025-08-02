@@ -28,7 +28,7 @@ const Navigation: React.FC<NavigationProps> = ({
       <Tabs.Root defaultValue={currentValue}>
         <Tabs.List size="2">
           <Tabs.Trigger value={currentValue}>Current Mission</Tabs.Trigger>
-          <Tabs.Trigger value={completedValue}>Completed Missions</Tabs.Trigger>
+          <Tabs.Trigger value={completedValue}>Missions</Tabs.Trigger>
           <Tabs.Trigger value={reportsValue}>Reports</Tabs.Trigger>
         </Tabs.List>
 

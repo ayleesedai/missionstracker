@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useCurrentMission } from "./useCurrentMission";
 import { supabase } from "../supabase/supabaseClient";
 import { useAuth } from "../supabase/AuthContext";
-import { Badge, Button, Flex, Text, TextField } from "@radix-ui/themes";
+import { Badge, Button, Flex } from "@radix-ui/themes";
 import MissionField from "./MissionField";
 
 export default function CurrentMission() {
@@ -43,18 +43,13 @@ export default function CurrentMission() {
     setError(null);
     setSuccess(null);
 
-    if (!form.title || !form.description || !form.start) {
-      setError("Please fill all required fields.");
-      return;
-    }
-
     if (currentMission) {
       const { error } = await supabase
         .from("mission")
         .update({
           title: form.title,
           description: form.description,
-          start_time: form.start,
+          start_time: form.start || null,
           end_time: form.end || null,
         })
         .eq("id", currentMission.id);
@@ -68,7 +63,7 @@ export default function CurrentMission() {
       const { error } = await supabase.from("mission").insert({
         title: form.title,
         description: form.description,
-        start_time: form.start,
+        start_time: form.start || null,
         end_time: form.end || null,
         user_uuid: user?.id,
       });
@@ -92,7 +87,6 @@ export default function CurrentMission() {
           type="datetime-local"
           value={form.start}
           onChange={handleChange}
-          required
         />
         <MissionField
           label="End"
@@ -105,7 +99,6 @@ export default function CurrentMission() {
           type="text"
           value={form.title}
           onChange={handleChange}
-          required
         />
         <MissionField
           label="Description"
