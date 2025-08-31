@@ -1,4 +1,3 @@
-import { Text } from '@radix-ui/themes'
 import ApplicationHeader from './layout/ApplicationHeader'
 import './App.css';
 import ApplicationBody from './layout/ApplicationBody';
