@@ -1,4 +1,3 @@
-import { Text } from '@radix-ui/themes'
 import ApplicationHeader from './layout/ApplicationHeader'
 import './App.css';
 import ApplicationBody from './layout/ApplicationBody';
@@ -6,6 +5,7 @@ import Navigation from './navigation/Navigation';
 import NavigationItem from './navigation/NavitagationItem';
 import Missions from './completed_missions/Missions';
 import CurrentMission from './current_mission/CurrentMission';
+import ReportsPage from './reports/ReportsPage';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Missions />
         </NavigationItem>
         <NavigationItem value="reports">
-          <Text>Reports are coming soon</Text>
+          <ReportsPage />
         </NavigationItem>
       </Navigation>
 		</ApplicationBody>
